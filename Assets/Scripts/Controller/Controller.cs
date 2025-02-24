@@ -1,25 +1,29 @@
 using UnityEngine;
 
-public abstract class Controller : MonoBehaviour
+// Abstract: Can have child classes
+public abstract class Controller : MonoBehaviour // Parent
 {
 
-    // Variable to hold are pawn
-    // This is the (pawn)/object we are controlling
+    // VARIABLES
+    // Gets pawn being controlled by user
     public Pawn pawn;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    // We MIGHT over ride so we use virtual on are function
+    // BLUEPRINTS
+    
+    // We MIGHT over ride so we use virtual
     public virtual void Start()
     {
         
     }
 
-    // Update is called once per frame
     public virtual void Update()
     {
         
     }
-    // abstract has no code in them BUT virtual MIGHT have code
-    public abstract void ProcessInputs(); // Child can use it though
+
+    //FUNCTIONS
+
+    // Abstract: Can be modified by child class of this parent
+    public abstract void ProcessInputs();
 
 }

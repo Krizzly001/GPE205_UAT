@@ -1,40 +1,52 @@
 using UnityEngine;
 
-//Inherits: Mover(Parent)
-public class TankMover : Mover
+/// Inheriting: Parent class Pawn
+public class TankMover : Mover // Child
 {
-    private Rigidbody rb; // Variable for Rigidbody/HasPhysics, making a component
-    private Transform tf; //
+    // VARIABLES
+    // Holds are Rigidbody and Transform
+    private Rigidbody rb; 
+    private Transform tf; 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // BLUEPRINTS
+
+    // Modifying
     public override void Start()
     {
-        //Get Rigidbody component
+        // Get are tanks rigidbody(mass, gravity & force) and tranform(position, rotation & scale)
+        // Place into are variables
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         
     }
 
+    // FUNCTIONS
+    // Override: gets are Mover funtions to modify
 
-    
-    // Override: changing the information in the function
     public override void Move(Vector3 direction, float speed)
     {
-        // Vector3 (Where its moving) = Normalize.Direction(Scalable to the game 0-1) MULTIPLY to the correct speed 
-        //                              MULTIPLE deltatime(Moves every framrate your computer handles)
+        // Vector3 (Where its moving) = 
+        //                              Normalize.Direction(Scalable to the game 0-1/Maintain direction) 
+        //                            * to the correct speed 
+        //                            * deltatime(Moves every framerate your computer handles)
         Vector3 moveVector = direction.normalized * speed * Time.deltaTime;
 
         // NewPosition(Current RigidBody position + Where to move RigitBody)
         rb.MovePosition(rb.position + moveVector);
 
     }
+
     public override void Rotate(float turnSpeed)
     {
+        // Rotate(X, Y, Z)
+        // Y: Controls turns(left/right)
+        // Never tilt or rolls here
+
         tf.Rotate(0, turnSpeed * Time.deltaTime, 0);
+
     }
 }

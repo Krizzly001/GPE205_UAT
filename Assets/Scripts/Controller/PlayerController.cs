@@ -1,27 +1,25 @@
 using UnityEngine;
 
-
-
-// Inherits Parent: Controller
-public class PlayerController : Controller
+// Inheriting: Parents class Controller
+public class PlayerController : Controller // Child
 {
-    //KeyCode: Using Keyboard inputs variables
+    //VARIABLES
+
+    //KeyCode: Using Keyboard assigned inputs 
     public KeyCode moveFowardKey;
     public KeyCode moveBackwardKey;
     public KeyCode rotateClockwiseKey;
     public KeyCode rotateCounterClockwiseKey;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // BLUEPRINTS
     public override void Start()
     {
         base.Start();
         //Link my PlayerControler to my GameManager
         GameManager.instance.RegisterPlayerController(this);
-
-
     }
-
+    // Once Destroyed
     public void OnDestroy()
     {
         // If we have a GameManager
@@ -33,9 +31,10 @@ public class PlayerController : Controller
             }
         }
     }
+  
     
 
-    // Update is called once per frame
+   // Update is called once per frame
     public override void Update()
     {
         // If we have a GameManager
@@ -46,15 +45,15 @@ public class PlayerController : Controller
                 GameManager.instance.players.Add(this);
             }
         }
+
         // "Listens" every frame draw for key inputs
         ProcessInputs();
         
         // Updates the screen
         base.Update();
     }
-    
 
-
+    //FUNCTIONS
 
     public override void ProcessInputs()
     {

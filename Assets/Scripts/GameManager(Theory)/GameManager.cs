@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Not a parent
 public class GameManager : MonoBehaviour
 {
+    //VARIABLES
+
     // Make a static instance
     public static GameManager instance;
-    public PlayerController playerController;
+
+    public PlayerController playerController; // Used on RegisterPlayerController
 
     // Prefabs
     public GameObject playerControllerPrefab;
@@ -15,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     // List that holds our player(s)
     public List<PlayerController> players;
+
+
+    // VARIABLES
 
     public void SpawnPlayer()
     {
@@ -33,13 +40,9 @@ public class GameManager : MonoBehaviour
 
 
     }
-    
-
 
      
-
     // Awake called before start() can run
-    // Makes sure
     private void Awake()
     {
         // If are instance doesnt exist yet...
@@ -79,8 +82,6 @@ public class GameManager : MonoBehaviour
         
     }
     
-   
-
     public void DoStuff()
     {
         Debug.Log("GameManager is doing stuff!");

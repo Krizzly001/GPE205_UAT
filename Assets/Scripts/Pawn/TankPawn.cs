@@ -1,24 +1,23 @@
 using UnityEngine;
 
-// Inheriting pawn so it alows us to store different variable values
-public class TankPawn : Pawn
+// Inheriting: Parent class Pawn
+public class TankPawn : Pawn // Child
 {
-    // Override every function or abstract
+    
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // BLUEPRINTS
     public override void Start()
     {
         mover = GetComponent<Mover>();
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         
     }
 
 
-    // Override because changing the information in the parent
+    // Override Pawn funtions to modify
     public override void MoveFoward()
     {
         //Debug.Log("Move Foward");

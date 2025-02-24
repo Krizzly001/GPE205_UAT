@@ -1,36 +1,37 @@
 using UnityEngine;
 
-// abstract is used here so that it can have children
-public abstract class Pawn : MonoBehaviour
+// Abstract: Can have child classes
+public abstract class Pawn : MonoBehaviour //Parent
 {
+    // VARIABLES
+    // Public: Developer can change the values
+    // Private: Cant be modified
 
-    // Public so designers can change the variable value
-    // Variable for move speed
     public float moveSpeed;
-    // Variable for turn speed
     public float turnSpeed;
     
+
     public Mover mover;
 
 
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //BLUEPRINTS
+    // When game start this runsw
     public virtual void Start()
     {
-        
-        
+
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        
+
     }
 
+    // FUNCTION
 
     // Functions to Move and rotate
-    // Be abstract because child might change the information in the function
+    // Abstract: Child class can override these functions
 
     public abstract void MoveFoward();
 
