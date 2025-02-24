@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 // Inherits Parent: Controller
 public class PlayerController : Controller
 {
@@ -14,17 +16,43 @@ public class PlayerController : Controller
     public override void Start()
     {
         base.Start();
+        //Link my PlayerControler to my GameManager
+        GameManager.instance.RegisterPlayerController(this);
+
+
     }
+
+    public void OnDestroy()
+    {
+        // If we have a GameManager
+        if (GameManager.instance != null) {
+            // And it tracks the player(s)
+            if (GameManager.instance.players != null) {
+                // Deregister with the GameManager
+                GameManager.instance.players.Remove(this);
+            }
+        }
+    }
+    
 
     // Update is called once per frame
     public override void Update()
     {
+        // If we have a GameManager
+        if (GameManager.instance != null) {
+            // And it tracks the player(s)
+            if (GameManager.instance.players != null) {
+                // Register with the GameManager
+                GameManager.instance.players.Add(this);
+            }
+        }
         // "Listens" every frame draw for key inputs
         ProcessInputs();
         
         // Updates the screen
         base.Update();
     }
+    
 
 
 
